@@ -18,7 +18,7 @@ app.use(express.urlencoded({extended:false}))
 app.use(bodyParser.json())
 app.use(
   cors({
-    origin: ["http://localhost:3000","192.168.18.93:3000"],
+    origin: ["https://poultry-inventory-server.vercel.app/"],
     credentials: true,
   })
 );
