@@ -1,0 +1,71 @@
+.spinner-container {
+    width: 150px;
+    height: 150px;
+    position: fixed;
+    margin: 35vh 37em;
+    overflow: hidden;
+  }
+
+ /* Portrait */
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2) {
+   .spinner-container{
+    width: 150px;
+    height: 150px;
+    position: fixed;
+    margin: 30vh 7em;
+    overflow: hidden;
+   }
+}
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 375px)
+  and (min-device-height: 812px)
+  and (max-device-height: 812px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+  /* Your CSS rules for the iPhone XS in portrait orientation */
+  .spinner-container{
+    width: 150px;
+    height: 150px;
+    position: fixed;
+    margin: 35vh 37em;
+    overflow: hidden;
+   }
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 812px)
+  and (max-device-width: 375px)
+  and (min-device-height: 375px)
+  and (max-device-height: 812px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+
+}
+
+
+  
+  .spinner {
+    position: absolute;
+    
+    width: calc(100% - 9.9px);
+    height: calc(100% - 9.9px);
+    border: 5px solid transparent;
+    border-radius: 50%;
+    border-top-color: black;
+    animation: spin 5s cubic-bezier(0.17, 0.49, 0.96, 0.79) infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }

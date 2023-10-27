@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.layout {
+  @apply flex;
+}
+
+main {
+  @apply w-full;
+  /* padding: 20px; */
+  @apply text-gray-400;
+}
+
+.sidebar {
+  @apply fixed top-0 left-0 w-60 h-screen flex-shrink-0 bg-white overflow-auto transition-all duration-500;
+  @apply text-gray-700;
+  /* color: var(-color-dark); */
+}
+
+.top_section {
+  @apply flex  px-4 py-2 transition-all duration-500;
+  /* items-center border-bottom: 2px solid #ccc; */
+  @apply bg-blue-900 text-white;
+  @apply h-auto;
+}
+
+.logo {
+  @apply text-5xl text-white;
+}
+
+.bars {
+  @apply flex text-3xl ml-auto cursor-pointer text-white transition-all duration-300;
+}
+
+.bars:hover {
+  @apply text-blue-500 text-xl;
+}
+
+.sidebar-item {
+  @apply p-3 block;
+  /* border-radius: 5px; */
+  /* border-bottom: 2px solid #ccc; */
+  @apply bg-opacity-10;
+  @apply hover:bg-gray-200 transition duration-150;
+}
+
+.s-parent {
+  @apply border-b border-gray-300;
+}
+
+.sidebar-title {
+  @apply flex justify-between items-center text-xl;
+}
+
+.sidebar-title span {
+  @apply flex items-center gap-3 transition-all duration-500;
+  @apply text-xl;
+}
+
+.sidebar-title span .icon {
+  @apply flex justify-center items-center  text-xl;
+  /* w-10 h-10 */
+}
+
+.sidebar-title .arrow-icon {
+  @apply cursor-pointer transition-all duration-500;
+}
+
+.sidebar-item.open > .sidebar-title .arrow-icon {
+  @apply transform rotate-90;
+}
+
+.sidebar-content {
+  @apply pt-2 h-0 overflow-hidden transition-all duration-300;
+}
+
+.sidebar-item.open > .sidebar-content {
+  @apply h-auto;
+}
+
+.s-child {
+  @apply border border-gray-300 rounded-md mt-2;
+}
+
+.s-child:hover {
+  @apply border border-blue-300;
+}
+
+a {
+  @apply text-gray-700 no-underline hover:text-blue-500 transition-all duration-200;
+}
+
+.active {
+  @apply text-blue-500 block relative w-full;
+  @apply bg-gray-200;
+}
+
+.active::after {
+  @apply  absolute w-2 h-full top-0 right-0 bg-blue-300;
+}
+
+.sublink .sidebar-item .sidebar-title {
+  @apply pl-10;
+}
+
+
+
+
+
+
