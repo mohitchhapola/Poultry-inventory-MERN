@@ -1,0 +1,13 @@
+
+useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const productData = await ProductService.getProducts();
+        dispatch(CALC_STORE_VALUE(productData));
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    fetchData();
+  }, [dispatch]);

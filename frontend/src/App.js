@@ -20,7 +20,7 @@ import { useDispatch } from 'react-redux';
 import { getLoginStatus } from './services/authServices';
 import { SET_LOGIN } from './redux/features/auth/authSlice';
 import { useEffect } from 'react';
-import ProductForm from './components/product form/product';
+import ProductForm from './components/product form/ProductForm';
 axios.defaults.withCredentials=true;
 
 
@@ -44,7 +44,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/product",
-    element: <ProductForm></ProductForm>,
+    element: <Sidebar>
+    <Layout>
+      <ProductForm />
+      </Layout>
+  </Sidebar>,
   },
   {
     path:"/dashboard",

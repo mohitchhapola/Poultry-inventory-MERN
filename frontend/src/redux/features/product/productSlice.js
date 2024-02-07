@@ -11,7 +11,6 @@ const initialState = {
     message: "",
     totalStoreValue: 0,
     outOfStock: 0,
-    category: [],
   }; 
 
   //create new product 
@@ -33,7 +32,7 @@ const initialState = {
   //get all product
   export const getProducts = createAsyncThunk(
     "products/getAll",
-    async (_, thunkAPI) =>{
+    async (_,thunkAPI) =>{
         try {
             return await ProductService.getProducts()
         } catch (error) {
@@ -83,7 +82,7 @@ const initialState = {
     "products/updateProduct",
     async ({customID,formData}, thunkAPI) =>{
         try {
-            return await ProductService.getProducts({customID},formData)
+            return await ProductService.updateProduct({customID},formData)
         } catch (error) {
             const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
             console.log(message);
@@ -93,23 +92,57 @@ const initialState = {
   );
   
 const productSlice = createSlice({
-    name:"production",
+    name:"product",
     initialState,
     reducers:{
-        CALC_STORE_VALUE(state, action){
-            const product = action.payload;
-            const array =[];
-            product.map((item)=>{
-                const { production, rate } = item;
-                const ProductionValue = production * rate;
-                return array.push(ProductionValue)
-            });
-            const totalValue = array.reduce((a,b)=>{
-                return a+b
-            }, 0)
-            state.totalStoreValue = totalValue;
-        }
-    },
+      CALC_STORE_VALUE(state, action) {
+        // console.log("CALC_STORE_VALUE payload:", action.payload);
+        const products = action.payload;
+        const array = [];
+        products.map((item) => {
+          const { production, rate } = item;
+          const productionValue = production * rate;
+          return array.push(productionValue)
+        });
+        const totalValue = array.reduce((a, b) => {
+          return a + b;
+        }, 0);
+        state.totalStoreValue = totalValue;
+        // Update the state in an immutable way
+        // return {
+        //   ...state,
+        //   totalStoreValue: totalValue,
+        // };
+      },
+      CALC_PRODUCTION_VALUE(state,action){
+        // console.log("CALC_Production_VALUE payload:", action.payload);
+
+       const products = action.payload;
+       const array = [];
+       products.map((item)=>{
+        const {production} = item;
+        return array.push(production)
+       });
+       const count = array.reduce((a, b) => {
+        return a + b;
+      }, 0);
+      state.totalEgg = count;
+      },
+      CALC_FEED_VALUE(state,action){
+        // console.log("CALC_Production_VALUE payload:", action.payload);
+
+       const products = action.payload;
+       const array = [];
+       products.map((item)=>{
+        const {feed} = item;
+        return array.push(feed)
+       });
+       const count = array.reduce((a, b) => {
+        return a + b;
+      }, 0);
+      state.usedFeed = count;
+      }
+    },      
     extraReducers: (builder) => {
         builder
           .addCase(createProduct.pending, (state) => {
@@ -136,7 +169,7 @@ const productSlice = createSlice({
             state.isLoading = false;
             state.isSuccess = true;
             state.isError = false;
-            console.log(action.payload);
+            console.log("getProducts",action.payload);
             state.products = action.payload;
           })
           .addCase(getProducts.rejected, (state, action) => {
@@ -195,11 +228,13 @@ const productSlice = createSlice({
 })
 
 
-export const { CALC_STORE_VALUE } =
+export const { CALC_STORE_VALUE , CALC_PRODUCTION_VALUE,CALC_FEED_VALUE } =
   productSlice.actions;
 
 export const selectIsLoading = (state) => state.product.isLoading;
 export const selectTotalStoreValue = (state) => state.product.totalStoreValue;
+export const selectProductionValue = (state) => state.product.totalEgg;
+export const selectFeedValue = (state) => state.product.usedFeed;
 export const selectProduct = (state) => state.product.product;
  
 

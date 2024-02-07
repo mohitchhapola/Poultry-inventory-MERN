@@ -8,7 +8,7 @@ moment.tz.setDefault('Asia/Kolkata');
 
 const dailyActSchema = mongoose.Schema({
     customID:{
-    type:String,
+    type: Number,
     unique:true,
     required:true
     },
@@ -18,7 +18,7 @@ const dailyActSchema = mongoose.Schema({
       },
     production:{
         type:Number,
-        default:"",
+        
         required:true,
     },
     rate:{

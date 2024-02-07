@@ -1,46 +1,43 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from "react";
+
 import { selectIsLoggedIn } from '../../redux/features/auth/authSlice';
 import redirectLogoutUser from '../../custom hook/redirectLogoutUser';
 
-const dummyData = [
-  { title: 'Total Users', value: 100 },
-  { title: 'Revenue', value: '$10,000' },
-  { title: 'New Orders', value: 25 },
-];
+import {useDispatch, useSelector} from "react-redux"
+import { getProducts } from "../../redux/features/product/productSlice";
+import ProductSummary from "../../components/productsummary/ProductSummary";
 
-function Dashboard() {
-  redirectLogoutUser("/");
-  // const dispatch = useDispatch();
 
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const { products, isLoading, isError, message } = useSelector(
-  //   (state) => state.product
-  // );
+export const formatNumbers = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+// const dummyData = [
+//   { title: 'Total Users', value: 100 },
+//   { title: 'Revenue', value: '$10,000' },
+//   { title: 'New Orders', value: 25 },
+// ];
+
+function Dashboard({product}) {
+  // redirectLogoutUser("/");
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const { products, isLoading, isError, message } = useSelector(
+    (state) => state.product
+    );
+
+  const dispatch = useDispatch();
+  
+  
+  
+  
+  useEffect(() => {
+    dispatch(getProducts())
+      // dispatch(CALC_STORE_VALUE(products));
+    }, [dispatch, products]);
+    console.log("totalStoreValue type:", typeof totalStoreValue);
   return (
-    <div className="min-h-screen min-w-screen p-5 bg-gray-100">
-      <main className="">
-        {/* Page header */}
-        <header className="mb-4">
-          <h1 className="lg:text-3xl  font-semibold">Dashboard Overview</h1>
-        </header>
-
-        {/* Dashboard content */}
-        <div className="grid grid-cols-1  w-max lg:grid-cols-3 gap-4">
-          {/* Dashboard cards */}
-          {dummyData.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white p-4 rounded-lg shadow-md"
-            >
-              <h2 className="text-xl font-semibold">{item.title}</h2>
-              <p className="text-2xl font-bold text-indigo-600">{item.value}</p>
-            </div>
-          ))}
-        </div>
-      </main>
-    </div>
+    <ProductSummary products={products}></ProductSummary>
   );
+
 }
 
 export default Dashboard;

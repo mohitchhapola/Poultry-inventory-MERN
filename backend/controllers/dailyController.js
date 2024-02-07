@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const DailyAct = require("../models/dailyActModel")
+const DailyAct = require("../models/dailyActModel");
 
 //create data
 const createData = asyncHandler(async(req,res)=>{
@@ -30,7 +30,7 @@ const createData = asyncHandler(async(req,res)=>{
 
 //get all employee
 const getAllData = asyncHandler(async(req,res)=>{
-    const data = await Emp.find({});
+    const data = await DailyAct.find({});
     res.status(200).json(data);
   })
 
@@ -51,13 +51,13 @@ const dataById = asyncHandler(async(req,res)=>{
 
  const deleteData = asyncHandler(async (req, res) => {
     const { customID } = req.params;
-    const emp = await DailyAct.findOneAndDelete({ customID });
+    const data = await DailyAct.findOneAndDelete({ customID });
   
     if (!customID) {
       res.status(400);
       throw new Error("Invalid customID");
     }
-    if (!emp) {
+    if (!data) {
       res.status(404);
       throw new Error("Data Not Found");
     }

@@ -2,11 +2,12 @@ import axios from "axios";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
-const API_URL = `${BACKEND_URL}/api/products/`;
+const API_URL = `${BACKEND_URL}/api/dailyAct/`;
 
 // Create New Product
 const createProduct = async (formData) => {
   const response = await axios.post(API_URL, formData);
+  console.log(response)
   return response.data;
 };
 
@@ -17,18 +18,20 @@ const getProducts = async () => {
 };
 
 // Delete a Product
-const deleteProduct = async ({customID}) => {
-  const response = await axios.delete(API_URL + {customID});
+const deleteProduct = async ({ customID }) => {
+  const response = await axios.delete(`${API_URL}${customID}`);
   return response.data;
 };
+
 // Get a Product
-const getProduct = async ({customID}) => {
-  const response = await axios.get(API_URL + {customID});
+const getProduct = async ({ customID }) => {
+  const response = await axios.get(`${API_URL}${customID}`);
   return response.data;
 };
+
 // Update Product
 const updateProduct = async ({customID}, formData) => {
-  const response = await axios.patch(`${API_URL}${{customID}}`, formData);
+  const response = await axios.patch(`${API_URL}${customID}`, formData);
   return response.data;
 };
 
