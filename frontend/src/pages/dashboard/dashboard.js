@@ -18,7 +18,7 @@ export const formatNumbers = (x) => {
 // ];
 
 function Dashboard({product}) {
-  // redirectLogoutUser("/");
+  redirectLogoutUser("/");
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const { products, isLoading, isError, message } = useSelector(
     (state) => state.product
@@ -30,10 +30,10 @@ function Dashboard({product}) {
   
   
   useEffect(() => {
-    dispatch(getProducts())
+    // dispatch(getProducts())
       // dispatch(CALC_STORE_VALUE(products));
     }, [dispatch, products]);
-    console.log("totalStoreValue type:", typeof totalStoreValue);
+    // console.log("totalStoreValue type:", typeof totalStoreValue);
   return (
     <ProductSummary products={products}></ProductSummary>
   );

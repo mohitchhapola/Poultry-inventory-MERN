@@ -48,7 +48,7 @@ const initialState = {
 
   export const deleteProduct = createAsyncThunk(
     "products/delete",
-    async ({customID}, thunkAPI) =>{
+    async (customID, thunkAPI) =>{
         try {
             return await ProductService.deleteProduct({customID})
         } catch (error) {
@@ -167,8 +167,8 @@ const productSlice = createSlice({
           })
           .addCase(getProducts.fulfilled, (state, action) => {
             state.isLoading = false;
-            state.isSuccess = true;
-            state.isError = false;
+            // state.isSuccess = true;
+            // state.isError = false;
             console.log("getProducts",action.payload);
             state.products = action.payload;
           })

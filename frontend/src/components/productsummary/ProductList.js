@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 // import { FILTER_PRODUCTS, selectFilteredProducts } from '../../redux/features/product/filterSlice'
 import Loader from '../../components/loader/loader';
-import { getProducts } from '../../redux/features/product/productSlice';
+import { deleteProduct, getProducts } from '../../redux/features/product/productSlice';
 
 const ProductList = () => {
   const [isLoading, setIsloading] = useState(false);
@@ -10,9 +10,14 @@ const ProductList = () => {
   const dispatch = useDispatch()
   const {products} = useSelector((state)=> state.product)
 
+  // const handleDelbtn = async() =>{
+  //   console.log(customID)
+  //  await dispatch(deleteProduct(customID));
+  // }
+
   useEffect(()=>{
     dispatch(getProducts())    
-    console.log("getproducts type:", typeof getProducts);
+    // console.log("getproducts type:", typeof getProducts);
     // console.log(setProductList);
 
   },[dispatch])
@@ -41,21 +46,25 @@ const ProductList = () => {
                   <th>Rate</th>
                   <th>Feed</th>
                   <th>TotalValue</th>
-                  {/* <th>Quantity</th>
-                  <th>Value</th>
-                  <th>Action</th> */}
+                  <th>Action</th>
+                  
                 </tr>
               </thead>
               <tbody> 
                 {products.map((i)=>{
                   // const { customId , production, rate ,feed} = product;
                   return(
-                    <tr >
+                    <tr key={i.customID}>
                       <td>{i.customID}</td>
                       <td>{i.production}</td>
                       <td>{i.rate}</td>
                       <td>{i.feed}</td>
                       <td>{i.production * i.rate}</td>
+                      <td >
+                        <button className='px-4'>Edit</button>
+                        <button onClick={() => dispatch(deleteProduct(i.customID))}>Delete</button>
+                        
+                        </td>
                       
                     </tr>
                   )

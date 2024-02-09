@@ -51,7 +51,7 @@ const dataById = asyncHandler(async(req,res)=>{
 
  const deleteData = asyncHandler(async (req, res) => {
     const { customID } = req.params;
-    const data = await DailyAct.findOneAndDelete({ customID });
+    const data = await DailyAct.findOneAndDelete( customID );
   
     if (!customID) {
       res.status(400);
