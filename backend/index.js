@@ -19,7 +19,8 @@ app.use(bodyParser.json())
 app.use(
   cors({
     origin: ["http://localhost:3000","192.168.18.93:3000"],
-    methods: ["POST", "GET","DELETE"],
+    methods: ["POST", "GET","DELETE","PATCH"],
+    // methods: [userRoute.allMethods],
     credentials: true,
   })
 );

@@ -24,7 +24,7 @@ function ProductForm(
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
   };
-  console.log("product state:", product)
+  // console.log("product state:", product)
   const handleFormSubmit = async (e) =>{
     e.preventDefault();
     // const formData = new FormData();

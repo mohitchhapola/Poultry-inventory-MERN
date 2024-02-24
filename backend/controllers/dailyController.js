@@ -67,20 +67,26 @@ const dataById = asyncHandler(async(req,res)=>{
   //update data
   const updateData = asyncHandler(async (req, res) => {
     const { customID } = req.params;
-    const data = await DailyAct.findOne({ customID });
-    if (data) {
-      const { production, rate, feed } = req.body;
-      data.production = production || data.production;
-      data.rate = rate || data.rate;
-      data.feed = feed || data.feed;
+    const { production, rate, feed } = req.body;
   
-      const updatedData = await data.save();
-      res.status(200).json(updatedData);
-    } else {
-      res.status(404);
-      throw new Error("Data Not Found");
+    try {
+      const data = await DailyAct.findOne({ customID: customID });
+  
+      if (data) {
+        data.production = production || data.production;
+        data.rate = rate || data.rate;
+        data.feed = feed || data.feed;
+  
+        const updatedData = await data.save();
+        res.status(200).json(updatedData);
+      } else {
+        res.status(404).json({ message: "Data Not Found" });
+      }
+    } catch (error) {
+      res.status(500).json({ message: "Internal Server Error" });
     }
   });
+  
   
 
 module.exports= {

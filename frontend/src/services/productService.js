@@ -30,10 +30,11 @@ const getProduct = async ( customID ) => {
 };
 
 // Update Product
-const updateProduct = async ({customID}, formData) => {
-  const response = await axios.patch(`${API_URL}${customID}`, formData);
+const updateProduct = async (customID, updateData) => {
+  const response = await axios.patch(`${API_URL}${customID}`,updateData);
   return response.data;
 };
+
 
 const ProductService = {
   createProduct,

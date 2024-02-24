@@ -21,6 +21,7 @@ import { getLoginStatus } from './services/authServices';
 import { SET_LOGIN } from './redux/features/auth/authSlice';
 import { useEffect } from 'react';
 import ProductForm from './components/product form/ProductForm';
+import ProductUpdate from './components/product form/ProductUpdate';
 axios.defaults.withCredentials=true;
 
 
@@ -56,6 +57,16 @@ const router = createBrowserRouter([
     <Sidebar>
       <Layout>
         <Dashboard />
+        </Layout>
+    </Sidebar>
+  
+  },
+  {
+    path:"/productupdate/:customID",
+    element:
+    <Sidebar>
+      <Layout>
+        <ProductUpdate />
         </Layout>
     </Sidebar>
   

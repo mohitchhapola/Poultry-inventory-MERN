@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 // import { FILTER_PRODUCTS, selectFilteredProducts } from '../../redux/features/product/filterSlice'
 import Loader from '../../components/loader/loader';
 import { deleteProduct, getProducts } from '../../redux/features/product/productSlice';
+import { Link } from "react-router-dom";
 
 const ProductList = () => {
   const [isLoading, setIsloading] = useState(false);
@@ -61,7 +62,7 @@ const ProductList = () => {
                       <td>{i.feed}</td>
                       <td>{i.production * i.rate}</td>
                       <td >
-                        <button className='px-4'>Edit</button>
+                        <Link to={`/productupdate/${i.customID}`} className="px-4">Edit</Link>
                         <button onClick={() => dispatch(deleteProduct(i.customID))}>Delete</button>
                         
                         </td>

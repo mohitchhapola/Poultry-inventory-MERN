@@ -18,7 +18,7 @@ export const formatNumbers = (x) => {
 // ];
 
 function Dashboard({product}) {
-  redirectLogoutUser("/");
+  // redirectLogoutUser("/");
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const { products, isLoading, isError, message } = useSelector(
     (state) => state.product

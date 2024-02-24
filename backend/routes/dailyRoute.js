@@ -7,6 +7,6 @@ router.post("/",createData)
 router.get("/:customID",dataById)
 router.delete("/:customID",deleteData)
 router.get("/",getAllData)
-router.patch("/update/:customID",updateData)
+router.patch("/:customID",updateData)
 
 module.exports = router;
