@@ -73,6 +73,7 @@ const dataById = asyncHandler(async(req,res)=>{
       const data = await DailyAct.findOne({ customID: customID });
   
       if (data) {
+        data.customID = customID || data.customID;
         data.production = production || data.production;
         data.rate = rate || data.rate;
         data.feed = feed || data.feed;

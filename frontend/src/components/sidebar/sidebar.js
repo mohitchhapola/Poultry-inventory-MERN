@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Sidebar({children}) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
   const toggle = () => setIsOpen(!isOpen);
@@ -21,19 +21,6 @@ function Sidebar({children}) {
       path: '/product',
     },
     {
-      title: 'Account',
-      children: [
-        {
-          title: 'Profile',
-          path: '/profile',
-        },
-        {
-          title: 'Edit Profile',
-          path: '/profile-update',
-        },
-      ],
-    },
-    {
       title: 'Report Bug',
       path: '/contact-us',
     },
@@ -42,8 +29,8 @@ function Sidebar({children}) {
   return (
     <>
     
-    <div className="flex ">
-  <div className={`sidebar  ${isOpen ? 'w-64' : 'w-16'} min-h-screen bg-gray-900 overflow-auto transition-all duration-500`}>
+    <div className="flex">
+  <div className={`sidebar  ${isOpen ? 'w-64' : 'w-4'} min-h-screen bg-gray-900 overflow-auto transition-all duration-500`}>
     <div className="top_section  flex items-center justify-between p-4 bg-dark-blue text-white">
       {/* <div className={`logo ${isOpen ? 'text-2xl' : 'hidden'} cursor-pointer`}>
         <RiProductHuntLine size={35} />

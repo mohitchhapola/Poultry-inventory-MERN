@@ -24,8 +24,9 @@ const ProductList = () => {
   },[dispatch])
   return (
     <>
-    <div className='text-center font-semibold text-black text-2xl'>
-      <h1>All Entries</h1>
+    <div className='font-semibold text-black inline lg:text-2xl'>
+      <h1 className='lg:text-center inline-block '>All Entries</h1>
+      <Link className='right-2 text-2xl absolute' to="/product">+</Link>
     </div>    
     
     {isLoading && 
@@ -35,11 +36,11 @@ const ProductList = () => {
             </div>
           
     }
-    <div className='p-1 w-full my-4'>
-    {/* {!isLoading && Products.length === 0 ? (
+    <div className='my-4'>
+    {/* {!isLoading && products.length === 0 ? (
       <p>NO Data , Please Make Some Enteries....</p>
     ) : (  */}
-      <table className='w-full border-collapse' >
+      <table className='min-w-full' >
       <thead className='border-y-2 border-cyan-600'>
                 <tr className=''>
                   <th>Id</th>

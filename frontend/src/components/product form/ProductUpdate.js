@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { updateProduct } from '../../redux/features/product/productSlice';
 
 const ProductUpdate = () => {
@@ -44,6 +44,7 @@ const ProductUpdate = () => {
   return (
     <>
       <div className="max-w-screen-sm mx-auto p-4">
+        <Link to="/dashboard">Back to Dashboard</Link>
         <h1 className="text-2xl font-bold mb-4">Edit/Update Table</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">

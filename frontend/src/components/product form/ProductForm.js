@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createProduct } from '../../redux/features/product/productSlice';
 const initialState = {
   customID: "",
@@ -38,9 +38,11 @@ function ProductForm(
     await dispatch(createProduct(product))
     navigate("/dashboard");
   }
+  
 
   return (
     <div className="max-w-screen-sm mx-auto p-4">
+      <Link to="/dashboard">Back to Dashboard</Link>
       <h1 className="text-2xl font-bold mb-4">Production Table</h1>
       <form onSubmit={handleFormSubmit} >
         <div className="mb-4">

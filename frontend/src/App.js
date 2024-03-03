@@ -45,30 +45,30 @@ const router = createBrowserRouter([
   },
   {
     path: "/product",
-    element: <Sidebar>
+    element: 
     <Layout>
       <ProductForm />
       </Layout>
-  </Sidebar>,
+  ,
   },
   {
     path:"/dashboard",
     element:
-    <Sidebar>
+    
       <Layout>
         <Dashboard />
         </Layout>
-    </Sidebar>
+    
   
   },
   {
     path:"/productupdate/:customID",
     element:
-    <Sidebar>
+    
       <Layout>
         <ProductUpdate />
         </Layout>
-    </Sidebar>
+    
   
   }
 ]);
