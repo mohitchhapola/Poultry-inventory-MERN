@@ -1,7 +1,7 @@
 import axios from "axios";
 import {toast} from "react-toastify";
 
-export const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "https://poultrybackend.vercel.app/";
+export const BACKEND_URL = "https://poultrybackend.vercel.app/" ||  process.env.REACT_APP_BACKEND_URL;
 export const validateEmail = (email) => {
   return  email.match(
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -93,6 +93,7 @@ export const resetPassword = async(userData, resetToken) => {
 
 export const getLoginStatus = async() => {
 try {
+  console.log("auths service",BACKEND_URL)
     const response = await axios.get(
         `${BACKEND_URL}/api/users/loggedin`
     )
